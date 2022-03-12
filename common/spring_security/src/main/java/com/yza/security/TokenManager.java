@@ -23,7 +23,12 @@ public class TokenManager {
     }
 
     //2.根据token字符串得到用户信息
+    public String getUserInfoFromToken(String token) {
+        String subject = Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token).getBody().getSubject();
+        return subject;
+    }
 
-
+    //3.删除token
+    public void removeToken() {}
 
 }
